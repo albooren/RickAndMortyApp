@@ -10,17 +10,19 @@ import UIKit
 class MainCollectionViewCell: UICollectionViewCell {
     static let identifier = "MainCollectionViewCell"
     
-    private lazy var charMainImage: UIImageView = {
+    private var charMainImage: UIImageView = {
         let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "rick")
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
     
-    private lazy var charNameLabel: UILabel = {
+    private var charNameLabel: UILabel = {
         let label = UILabel()
         label.text = "TEST"
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .boldSystemFont(ofSize: 18)
         label.textColor = .white
         label.textAlignment = .left
@@ -29,15 +31,26 @@ class MainCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(charMainImage)
-        contentView.addSubview(charNameLabel)
+        addSubviews()
+        setupConstraints()
+    }
+    
+    func setupConstraints(){
+        NSLayoutConstraint.activate([
+            charMainImage.centerXAnchor.constraint(equalTo: centerXAnchor),
+            charMainImage.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            
+            charNameLabel.topAnchor.constraint(equalTo: charMainImage.bottomAnchor, constant: 10),
+            charNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+        ])
+    }
+    
+    func addSubviews() {
+        addSubview(charMainImage)
+        addSubview(charNameLabel)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    override func layoutSubviews() {
-        charNameLabel.frame = CGRect(x: 15, y: contentView.frame.size.height-5, width: contentView.frame.size.width - 10, height: 50)
-        charMainImage.frame = CGRect(x: 0, y: 0, width: contentView.frame.size.width, height: contentView.frame.size.height)
     }
 }

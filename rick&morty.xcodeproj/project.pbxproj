@@ -13,9 +13,10 @@
 		C974E1CE264AA6EB00E67C81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C974E1CD264AA6EB00E67C81 /* Assets.xcassets */; };
 		C974E1DC264AA6EB00E67C81 /* rick_mortyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974E1DB264AA6EB00E67C81 /* rick_mortyTests.swift */; };
 		C974E1E7264AA6EB00E67C81 /* rick_mortyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974E1E6264AA6EB00E67C81 /* rick_mortyUITests.swift */; };
-		C974E202264AB2D900E67C81 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974E201264AB2D900E67C81 /* CollectionViewController.swift */; };
 		C974E209264AB89200E67C81 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C974E208264AB89200E67C81 /* DetailViewController.swift */; };
 		C9770885264B438A0016B096 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9770884264B438A0016B096 /* MainCollectionViewCell.swift */; };
+		C987326A264C0E4D0084D505 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9873269264C0E4D0084D505 /* Model.swift */; };
+		C9A16B38264C026E00C5DEB1 /* ApiLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A16B37264C026E00C5DEB1 /* ApiLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +49,10 @@
 		C974E1E2264AA6EB00E67C81 /* rick&mortyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rick&mortyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C974E1E6264AA6EB00E67C81 /* rick_mortyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rick_mortyUITests.swift; sourceTree = "<group>"; };
 		C974E1E8264AA6EC00E67C81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C974E201264AB2D900E67C81 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C974E208264AB89200E67C81 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C9770884264B438A0016B096 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
+		C9873269264C0E4D0084D505 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C9A16B37264C026E00C5DEB1 /* ApiLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +106,9 @@
 				C974E1C4264AA6E900E67C81 /* AppDelegate.swift */,
 				C974E1C6264AA6E900E67C81 /* SceneDelegate.swift */,
 				C974E1C8264AA6E900E67C81 /* ViewController.swift */,
+				C9A16B37264C026E00C5DEB1 /* ApiLayer.swift */,
+				C9873269264C0E4D0084D505 /* Model.swift */,
 				C9770884264B438A0016B096 /* MainCollectionViewCell.swift */,
-				C974E201264AB2D900E67C81 /* CollectionViewController.swift */,
 				C974E208264AB89200E67C81 /* DetailViewController.swift */,
 				C974E1CD264AA6EB00E67C81 /* Assets.xcassets */,
 				C974E1D2264AA6EB00E67C81 /* Info.plist */,
@@ -259,9 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C974E202264AB2D900E67C81 /* CollectionViewController.swift in Sources */,
+				C987326A264C0E4D0084D505 /* Model.swift in Sources */,
 				C9770885264B438A0016B096 /* MainCollectionViewCell.swift in Sources */,
 				C974E1C9264AA6E900E67C81 /* ViewController.swift in Sources */,
+				C9A16B38264C026E00C5DEB1 /* ApiLayer.swift in Sources */,
 				C974E209264AB89200E67C81 /* DetailViewController.swift in Sources */,
 				C974E1C5264AA6E900E67C81 /* AppDelegate.swift in Sources */,
 				C974E1C7264AA6E900E67C81 /* SceneDelegate.swift in Sources */,
@@ -423,6 +427,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "rick&morty/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,6 +446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "rick&morty/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
