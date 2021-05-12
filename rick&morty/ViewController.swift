@@ -10,21 +10,19 @@ import UIKit
 class ViewController: UIViewController {
   
     // MARK: - UI Objects -
-    lazy var welcomeLabel: UILabel = {
+    private var welcomeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Characters"
+        label.numberOfLines = 0
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 24)
         return label
     }()
-    lazy var mainCollectionView: UICollectionView = {
+    private var mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 50
-        layout.minimumInteritemSpacing = 0
-//        layout.estimatedItemSize = CGSize(width: 157, height: 180)
-        layout.itemSize = CGSize(width: (view.frame.size.width-20)/2, height: 210)
+        layout.estimatedItemSize =  CGSize(width: 197, height: 250)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -33,42 +31,38 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        view.addSubview(welcomeLabel)
         addSubview()
         setupConstraints()
         prepForUiCollectionView()
     
     }
 
-    func setupConstraints() {
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
-            welcomeLabel.widthAnchor.constraint(equalToConstant: 135),
+            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             welcomeLabel.heightAnchor.constraint(equalToConstant: 29),
-            welcomeLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            welcomeLabel.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 220),
-            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 109),
             
-            mainCollectionView.widthAnchor.constraint(equalToConstant: view.frame.width),
-            mainCollectionView.heightAnchor.constraint(equalToConstant: view.frame.height),
-            mainCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor, constant: 20),
-          
-
+            mainCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor,constant: 20),
+            mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
        
     }
-    func addSubview(){
+    private func addSubview(){
         view.addSubview(welcomeLabel)
         view.addSubview(mainCollectionView)
     }
     
-}
-extension ViewController : UICollectionViewDelegate,UICollectionViewDataSource {
-    
-    func prepForUiCollectionView(){
+    private func prepForUiCollectionView(){
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
     }
+}
+extension ViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
@@ -82,13 +76,11 @@ extension ViewController : UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(indexPath.row) tıklandı")
     }
-    
-    
-    
-    
-    
-    
-    
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
 }
 
