@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
   
     // MARK: - UI Objects -
     private var welcomeLabel: UILabel = {
@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    private var mainViewModel = MainViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
         addSubview()
         setupConstraints()
         prepForUiCollectionView()
-    
+        getData()
     }
 
     private func setupConstraints() {
@@ -61,21 +62,33 @@ class ViewController: UIViewController {
         mainCollectionView.dataSource = self
         mainCollectionView.register(MainCollectionViewCell.self, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
     }
+    
+    private func getData() {
+        mainViewModel.getCharactersData(onCompleted: { [weak self] in
+            guard let self = self else { return }
+            self.mainCollectionView.reloadData()
+        })
+    }
 }
-extension ViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension MainViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return mainViewModel.characterList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath)
-        cell.backgroundColor = .black
-        return cell
+        if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell {
+            cell.charNameLabel.text = mainViewModel.characterList[indexPath.row].name
+            return cell
+        } else {
+            return UICollectionViewCell()
+        }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("\(indexPath.row) tıklandı")
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }

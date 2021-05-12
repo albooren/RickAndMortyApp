@@ -19,7 +19,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private var charNameLabel: UILabel = {
+    var charNameLabel: UILabel = {
         let label = UILabel()
         label.text = "TEST"
         label.translatesAutoresizingMaskIntoConstraints = false
