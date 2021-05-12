@@ -38,7 +38,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addSub()
+        setupConstraints()
         
     }
     func setupConstraints(){
@@ -60,6 +61,12 @@ class DetailViewController: UIViewController {
             genderLabel.leftAnchor.constraint(equalTo: charImageView.rightAnchor, constant: 18),
             genderLabel.topAnchor.constraint(equalTo: currentStatusLabel.bottomAnchor, constant: 14)
         ])
+    }
+    func addSub(){
+        view.addSubview(charNameLabel)
+        view.addSubview(charImageView)
+        view.addSubview(currentStatusLabel)
+        view.addSubview(genderLabel)
     }
     
 }
