@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MainViewController: UIViewController {
-  
+    
     // MARK: - UI Objects -
     private var welcomeLabel: UILabel = {
         let label = UILabel()
@@ -28,16 +29,17 @@ class MainViewController: UIViewController {
         return collectionView
     }()
     private var mainViewModel = MainViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         addSubview()
         setupConstraints()
         prepForUiCollectionView()
         getData()
     }
-
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
@@ -50,7 +52,7 @@ class MainViewController: UIViewController {
             mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
         ])
-       
+        
     }
     private func addSubview(){
         view.addSubview(welcomeLabel)
@@ -71,7 +73,7 @@ class MainViewController: UIViewController {
     }
 }
 extension MainViewController : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-   
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return mainViewModel.characterList.count
     }
@@ -79,6 +81,7 @@ extension MainViewController : UICollectionViewDelegate,UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell {
             cell.charNameLabel.text = mainViewModel.characterList[indexPath.row].name
+            cell.charMainImage.sd_setImage(with: URL(string: mainViewModel.characterList[indexPath.row].image ?? ""))
             return cell
         } else {
             return UICollectionViewCell()
@@ -86,12 +89,17 @@ extension MainViewController : UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("\(indexPath.row) tıklandı")
+        let detailViewController = DetailViewController()
+        let model = mainViewModel.characterList[indexPath.row]
+        detailViewController.detailViewModel = DetailViewModel(characterModel: model)
+//        navigationController?.pushViewController(detailViewController, animated: true)
+        present(detailViewController, animated: true, completion: nil)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }

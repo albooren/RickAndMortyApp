@@ -6,6 +6,8 @@ target 'rick&morty' do
   use_frameworks!
 
   pod 'Alamofire'
+  pod 'SDWebImage'
+  pod 'iOSDropDown'
 
   # Pods for rick&morty
 

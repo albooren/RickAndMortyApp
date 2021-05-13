@@ -22,3 +22,4 @@ struct CharacterResult: Decodable {
     let url: String?
     let created: String?
 }
+

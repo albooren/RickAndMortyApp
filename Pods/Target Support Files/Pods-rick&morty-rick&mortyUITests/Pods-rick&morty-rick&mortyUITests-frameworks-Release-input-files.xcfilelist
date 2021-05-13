@@ -1,2 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-rick&morty-rick&mortyUITests/Pods-rick&morty-rick&mortyUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
+${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework
