@@ -125,7 +125,10 @@ class DetailViewController: UIViewController {
         charImageView.sd_setImage(with: URL(string: detailViewModel?.characterModel?.image ?? ""))
         currentStatusLabel.text = "\(detailViewModel?.characterModel?.status ?? ""), \(detailViewModel?.characterModel?.species ?? "")"
         genderLabel.text = detailViewModel?.characterModel?.gender
-        dropDownMenu.optionArray = detailViewModel?.characterModel?.episode ?? [""]
+        detailViewModel?.getEpisodeDetail(onCompleted: { [weak self] (data) in
+            guard let self = self else { return }
+            self.dropDownMenu.optionArray = data
+        })
     }
     
     @objc func doneTapped() {
