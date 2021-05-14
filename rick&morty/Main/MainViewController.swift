@@ -23,12 +23,13 @@ class MainViewController: UIViewController {
     private var mainCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.estimatedItemSize =  CGSize(width: 197, height: 250)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     private var mainViewModel = MainViewModel()
+    
+    public var loadingView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,21 @@ class MainViewController: UIViewController {
         ])
         
     }
+    
+    public func setupLoadingView(){
+        loadingView = UIView(frame: view.bounds)
+        loadingView.backgroundColor = GenericColor.loadingIndicatorBackgroundColor
+        let loadingIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        loadingIndicator.center = loadingView.center
+        loadingIndicator.startAnimating()
+        loadingView.addSubview(loadingIndicator)
+        view.addSubview(loadingView)
+    }
+    
+    public func endLoadingView() {
+        loadingView.removeFromSuperview()
+    }
+    
     private func addSubview(){
         view.addSubview(welcomeLabel)
         view.addSubview(mainCollectionView)
@@ -69,6 +85,10 @@ class MainViewController: UIViewController {
         mainViewModel.getCharactersData(onCompleted: { [weak self] in
             guard let self = self else { return }
             self.mainCollectionView.reloadData()
+            self.endLoadingView()
+        }, onFailed: { [weak self] in
+            guard let self = self else { return }
+            self.showError(alertTitle: "Hata!", alertSubtitle: "Veriler Yüklenemedi!", okButtonTitle: "Tamam")
         })
     }
 }
@@ -92,7 +112,6 @@ extension MainViewController : UICollectionViewDelegate,UICollectionViewDataSour
         let detailViewController = DetailViewController()
         let model = mainViewModel.characterList[indexPath.row]
         detailViewController.detailViewModel = DetailViewModel(characterModel: model)
-//        navigationController?.pushViewController(detailViewController, animated: true)
         present(detailViewController, animated: true, completion: nil)
     }
     
@@ -102,6 +121,10 @@ extension MainViewController : UICollectionViewDelegate,UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: (view.frame.width/2)-10, height: 250)
     }
 }
 

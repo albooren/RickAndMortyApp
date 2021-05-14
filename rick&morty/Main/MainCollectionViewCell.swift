@@ -18,7 +18,7 @@ class MainCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 157, height: 180))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 10
-        imageView.image = UIImage(named: "rick")
+        imageView.image = UIImage(named: "loading")
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView

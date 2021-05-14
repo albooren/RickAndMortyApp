@@ -23,7 +23,7 @@
 		C98A24DA264C68FB00DE3685 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98A24D9264C68FB00DE3685 /* MainViewModel.swift */; };
 		C98A24E0264C692700DE3685 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98A24DF264C692700DE3685 /* NetworkManager.swift */; };
 		C98A24E8264C694B00DE3685 /* NetworkParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98A24E7264C694B00DE3685 /* NetworkParameters.swift */; };
-		C9F3D8B4264DB0CD00A60956 /* GenericColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3D8B3264DB0CD00A60956 /* GenericColor.swift */; };
+		C9F3D8B4264DB0CD00A60956 /* GenericComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3D8B3264DB0CD00A60956 /* GenericComponent.swift */; };
 		C9F3D8CD264DB7D400A60956 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F3D8CC264DB7D400A60956 /* DetailModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +71,7 @@
 		C98A24D9264C68FB00DE3685 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		C98A24DF264C692700DE3685 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C98A24E7264C694B00DE3685 /* NetworkParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkParameters.swift; sourceTree = "<group>"; };
-		C9F3D8B3264DB0CD00A60956 /* GenericColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericColor.swift; sourceTree = "<group>"; };
+		C9F3D8B3264DB0CD00A60956 /* GenericComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericComponent.swift; sourceTree = "<group>"; };
 		C9F3D8CC264DB7D400A60956 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		CC82984C4E43F424394FCA26 /* Pods-rick&mortyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rick&mortyTests.debug.xcconfig"; path = "Target Support Files/Pods-rick&mortyTests/Pods-rick&mortyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F39D35414AAFC6427DCEF503 /* Pods_rick_morty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rick_morty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +128,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C9701388264E95670008918E /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C98A24E7264C694B00DE3685 /* NetworkParameters.swift */,
+				C98A24DF264C692700DE3685 /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		C974E1B8264AA6E900E67C81 = {
 			isa = PBXGroup;
 			children = (
@@ -155,12 +164,12 @@
 			children = (
 				C98A24D8264C68D900DE3685 /* Main */,
 				C98169A3264D4AAE00F932F8 /* Detail */,
+				C9701388264E95670008918E /* Networking */,
 				C974E1C4264AA6E900E67C81 /* AppDelegate.swift */,
-				C98A24DF264C692700DE3685 /* NetworkManager.swift */,
 				C974E1C6264AA6E900E67C81 /* SceneDelegate.swift */,
 				C974E1CD264AA6EB00E67C81 /* Assets.xcassets */,
 				C974E1D2264AA6EB00E67C81 /* Info.plist */,
-				C9F3D8B3264DB0CD00A60956 /* GenericColor.swift */,
+				C9F3D8B3264DB0CD00A60956 /* GenericComponent.swift */,
 			);
 			path = "rick&morty";
 			sourceTree = "<group>";
@@ -200,7 +209,6 @@
 				C9770884264B438A0016B096 /* MainCollectionViewCell.swift */,
 				C9873269264C0E4D0084D505 /* MainModel.swift */,
 				C98A24D9264C68FB00DE3685 /* MainViewModel.swift */,
-				C98A24E7264C694B00DE3685 /* NetworkParameters.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -442,7 +450,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9F3D8CD264DB7D400A60956 /* DetailModel.swift in Sources */,
-				C9F3D8B4264DB0CD00A60956 /* GenericColor.swift in Sources */,
+				C9F3D8B4264DB0CD00A60956 /* GenericComponent.swift in Sources */,
 				C987326A264C0E4D0084D505 /* MainModel.swift in Sources */,
 				C9770885264B438A0016B096 /* MainCollectionViewCell.swift in Sources */,
 				C98A24E8264C694B00DE3685 /* NetworkParameters.swift in Sources */,

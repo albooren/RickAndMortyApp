@@ -16,7 +16,7 @@ class DetailViewModel {
         self.characterModel = characterModel
     }
     
-    func getEpisodeDetail(onCompleted: @escaping ([String]) -> ()) {
+    func getEpisodeDetail(onCompleted: @escaping ([String]) -> (), onFailed: @escaping () -> ()) {
         guard let urlList = characterModel?.episode else { return }
         for url in urlList {
             NetworkManager.shared.request(with: url, onComplete: { [weak self] (data: EpisodeDetailModel) in
@@ -24,6 +24,8 @@ class DetailViewModel {
                 let result = name + " - " + episode
                 self.episodeList.append(result)
                 onCompleted(self.episodeList)
+            }, onError: {
+                onFailed()
             })
         }
     }

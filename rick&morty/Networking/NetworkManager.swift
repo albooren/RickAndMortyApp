@@ -14,14 +14,14 @@ class NetworkManager {
     
     private init() {}
     
-    func request<T: Decodable>(with url: String, onComplete: @escaping (T) -> ()) {
+    func request<T: Decodable>(with url: String, onComplete: @escaping (T) -> (), onError: @escaping () -> ()) {
         AF.request(url, method: .get, encoding: URLEncoding.default).response { (response) in
-            guard let remoteData = response.data else { fatalError() }
+            guard let remoteData = response.data else { return onError() }
             do {
                 let decodedData = try JSONDecoder().decode(T.self, from: remoteData)
                 onComplete(decodedData)
-            } catch let error {
-                print(error)
+            } catch {
+                onError()
             }
         }
     }

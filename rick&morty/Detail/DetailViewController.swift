@@ -128,6 +128,8 @@ class DetailViewController: UIViewController {
         detailViewModel?.getEpisodeDetail(onCompleted: { [weak self] (data) in
             guard let self = self else { return }
             self.dropDownMenu.optionArray = data
+        }, onFailed: {
+            self.showError(alertTitle: "Hata!", alertSubtitle: "Detay sayfası yüklenemedi!", okButtonTitle:"Tamam")
         })
     }
     

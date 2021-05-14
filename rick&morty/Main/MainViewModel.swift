@@ -11,11 +11,13 @@ class MainViewModel {
     
     var characterList = [CharacterResult]()
     
-    func getCharactersData(onCompleted: @escaping () -> ()) {
+    func getCharactersData(onCompleted: @escaping () -> (), onFailed: @escaping () -> ()) {
         NetworkManager.shared.request(with: getCharactersURL(), onComplete: { [weak self] (data: MainResults) in
             guard let self = self else { return }
             self.handleCharactersData(data)
             onCompleted()
+        }, onError: {
+            onFailed()
         })
     }
     
