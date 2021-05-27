@@ -79,8 +79,7 @@ class DetailViewController: UIViewController {
         view.backgroundColor = GenericColor.detailViewControllerBackgroudColor
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneTapped))
         addSubviews()
-        setupConstraints()
-//        setupConstraintWithSnapKit()
+        setupConstraintWithSnapKit()
         getData()
     }
     
@@ -93,65 +92,34 @@ class DetailViewController: UIViewController {
         view.addSubview(dropDownMenu)
     }
     
-//    private func setupConstraintWithSnapKit(){
-//        doneButton.snp.makeConstraints { (make) in
-//            make.top.equalTo(view.snp_topMargin).inset(26)
-//            make.leading.equalTo(view.snp_leadingMargin).inset(20)
-//        }
-//        charNameLabel.snp.makeConstraints { (make) in
-//            make.top.equalTo(view.snp_leadingMargin).inset(106)
-//            make.leading.equalTo(view.snp_leadingMargin).inset(20)
-//        }
-//        charImageView.snp.makeConstraints { (make) in
-//            make.width.height.equalTo(90)
-//            make.top.equalTo(charNameLabel.snp_bottomMargin).inset(20)
-//            make.left.equalTo(view.snp_leftMargin).inset(20)
-//        }
-//        currentStatusLabel.snp.makeConstraints { (make) in
-//            make.leading.equalTo(charImageView.snp_trailingMargin).inset(18)
-//            make.top.equalTo(charNameLabel.snp_bottomMargin).inset(43)
-//            make.bottom.equalTo(genderLabel.snp_topMargin).inset(-14)
-//        }
-//        genderLabel.snp.makeConstraints { (make) in
-//            make.leading.equalTo(charImageView.snp_trailingMargin).inset(18)
-//            make.trailing.equalTo(view.snp_trailingMargin).inset(211)
-//        }
-//        dropDownMenu.snp.makeConstraints { (make) in
-//            make.top.equalTo(genderLabel.snp_bottomMargin).inset(43)
-//            make.width.equalTo(335)
-//            make.centerX.equalTo(view.snp_centerXWithinMargins)
-//            make.height.equalTo(60)
-//
-//        }
-//
-//    }
-    
-    func setupConstraints(){
-        NSLayoutConstraint.activate([
-            
-            doneButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 26),
-            doneButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-
-            charNameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 106),
-            charNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-
-            charImageView.widthAnchor.constraint(equalToConstant: 90),
-            charImageView.heightAnchor.constraint(equalToConstant: 90),
-            charImageView.topAnchor.constraint(equalTo: charNameLabel.bottomAnchor, constant: 20),
-            charImageView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-
-            currentStatusLabel.leadingAnchor.constraint(equalTo: charImageView.trailingAnchor, constant: 18),
-            currentStatusLabel.topAnchor.constraint(equalTo: charNameLabel.bottomAnchor, constant: 43),
-            currentStatusLabel.bottomAnchor.constraint(equalTo: genderLabel.topAnchor, constant: -14),
-            
-            genderLabel.leadingAnchor.constraint(equalTo: charImageView.trailingAnchor, constant: 18),
-            genderLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 211),
-            
-            dropDownMenu.topAnchor.constraint(equalTo: genderLabel.bottomAnchor, constant: 43),
-            dropDownMenu.widthAnchor.constraint(equalToConstant: 335),
-            dropDownMenu.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            dropDownMenu.heightAnchor.constraint(equalToConstant: 60)
-        ])
+    private func setupConstraintWithSnapKit(){
+        doneButton.snp.makeConstraints { (make) in
+            make.top.equalTo(view.snp_topMargin).inset(26)
+            make.leading.equalTo(view.snp_leadingMargin).inset(20)
+        }
+        charNameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(view.snp_topMargin).inset(70)
+            make.leading.equalTo(view.snp_leadingMargin).inset(20)
+        }
+        charImageView.snp.makeConstraints { (make) in
+            make.width.height.equalTo(90)
+            make.top.equalTo(charNameLabel.snp_bottomMargin).inset(-40)
+            make.left.equalTo(view.snp_leftMargin).inset(20)
+        }
+        currentStatusLabel.snp.makeConstraints { (make) in
+            make.leading.equalTo(charImageView.snp_trailingMargin).inset(-40)
+            make.top.equalTo(view.snp_topMargin).inset(150)
+        }
+        genderLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(currentStatusLabel.snp_bottomMargin).inset(-20)
+            make.leading.equalTo(charImageView.snp_trailingMargin).inset(-40)
+        }
+        dropDownMenu.snp.makeConstraints { (make) in
+            make.top.equalTo(charImageView.snp_bottomMargin).inset(-50)
+            make.width.equalTo(335)
+            make.centerX.equalTo(view.snp_centerXWithinMargins)
+            make.height.equalTo(60)
+        }
     }
     
     func getData() {

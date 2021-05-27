@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         mainCollectionView.snp.makeConstraints { (make) in
             make.top.equalTo(welcomeLabel.snp_bottomMargin).inset(30)
             make.bottom.equalTo(view.snp_bottomMargin)
-            make.width.equalTo(view.snp_width)
+            make.width.equalTo(view.snp.width)
         }
         
     }
