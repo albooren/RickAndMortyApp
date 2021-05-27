@@ -8,6 +8,7 @@ target 'rick&morty' do
   pod 'Alamofire'
   pod 'SDWebImage'
   pod 'iOSDropDown'
+  pod 'SnapKit'
 
   # Pods for rick&morty
 

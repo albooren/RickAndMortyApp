@@ -131,8 +131,8 @@
 		C9701388264E95670008918E /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				C98A24E7264C694B00DE3685 /* NetworkParameters.swift */,
 				C98A24DF264C692700DE3685 /* NetworkManager.swift */,
+				C98A24E7264C694B00DE3685 /* NetworkParameters.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";

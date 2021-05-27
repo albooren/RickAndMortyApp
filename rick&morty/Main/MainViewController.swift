@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SnapKit
 
 class MainViewController: UIViewController {
     
@@ -36,25 +37,42 @@ class MainViewController: UIViewController {
         view.backgroundColor = .black
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         addSubview()
-        setupConstraints()
+        setupConstraintWithSnapKit()
+//        setupConstraints()
         prepForUiCollectionView()
+        setupLoadingView()
         getData()
     }
-    
-    private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            welcomeLabel.heightAnchor.constraint(equalToConstant: 29),
-            
-            mainCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor,constant: 20),
-            mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-            mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
-        ])
+    private func setupConstraintWithSnapKit() {
+        welcomeLabel.snp.makeConstraints { (make) in
+            make.leading.equalTo(view.snp_leadingMargin).offset(20)
+            make.top.equalTo(view.snp_topMargin).offset(50)
+            make.height.equalTo(29)
+            make.trailing.equalTo(view.snp_trailingMargin).offset(-29)
+            make.bottom.equalTo(mainCollectionView.snp_topMargin).offset(-30)
+        }
+        mainCollectionView.snp.makeConstraints { (make) in
+            make.top.equalTo(welcomeLabel.snp_bottomMargin).inset(30)
+            make.bottom.equalTo(view.snp_bottomMargin)
+            make.width.equalTo(view.snp_width)
+        }
         
     }
+    
+//    private func setupConstraints() {
+//        NSLayoutConstraint.activate([
+////            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
+////            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+////            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+////            welcomeLabel.heightAnchor.constraint(equalToConstant: 29),
+////
+////            mainCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor,constant: 20),
+////            mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+////            mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+////            mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
+//        ])
+//
+//    }
     
     public func setupLoadingView(){
         loadingView = UIView(frame: view.bounds)
@@ -124,7 +142,7 @@ extension MainViewController : UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (view.frame.width/2)-10, height: 250)
+        return CGSize(width: (view.frame.width/2)-5, height: 250)
     }
 }
 
