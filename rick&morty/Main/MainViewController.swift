@@ -38,7 +38,6 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         addSubview()
         setupConstraintWithSnapKit()
-//        setupConstraints()
         prepForUiCollectionView()
         setupLoadingView()
         getData()
@@ -56,23 +55,7 @@ class MainViewController: UIViewController {
             make.bottom.equalTo(view.snp_bottomMargin)
             make.width.equalTo(view.snp.width)
         }
-        
     }
-    
-//    private func setupConstraints() {
-//        NSLayoutConstraint.activate([
-////            welcomeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50),
-////            welcomeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-////            welcomeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-////            welcomeLabel.heightAnchor.constraint(equalToConstant: 29),
-////
-////            mainCollectionView.topAnchor.constraint(equalTo: welcomeLabel.bottomAnchor,constant: 20),
-////            mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-////            mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-////            mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10)
-//        ])
-//
-//    }
     
     public func setupLoadingView(){
         loadingView = UIView(frame: view.bounds)
